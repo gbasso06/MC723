@@ -56,7 +56,26 @@ Novamente a Raspberry Pi apresentou o pior tempo: 133.27 seg, muito superior os 
 Com exceção destes casos anormais, foi possível perceber que os processadores mais modernos apresentaram tempos mais baixos. <br>
 
 ## Benchmark 5: Ordenação
-## Benchmark 6:
+
+* Dados comparados: Média do pior, melhor e caso médio, usando o algoritmo mais lento e mais rápido para cada caso.<br>
+
+|               | Média do pior caso, com algoritmo mais lento (bubbles) | Média do pior caso, com algoritmo mais rápido (Quick) | Média do caso médio, com o algoritmo mais lento (bubble) | Média do caso médio, com o algoritmo mais rápido (Quick) | Média do melhor caso, com o algoritmo mais lento (selection) | Média do melhor caso, com o algoritmo mais rápido (insertion) |
+|---------------|:-------------------------------------------------------:|-------------------------------------------------------:|----------------------------------------------------------|----------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|
+| Media         |                          60.58                          |                                                 0.0045 | 34.82                                                    | 0.0045                                                   | 26.6216                                                       | 0.00134                                                       |
+| Mediana       |                          21.04                          |                                                 0.0104 | 12.26                                                    | 0.0101                                                   | 9.4349                                                        | 0.000535                                                      |
+| Desvio Padrão |                          74.82                          |                                                0.01175 | 42.88                                                    | 0.01147                                                  | 32.2846                                                       | 0.0015574                                                     |
+
+Os tempos medidos neste benchmark também confirmaram as hipoteses teóricas de que os processadores mais potentes, apresentam melhor desempenho. Porém o que vale ressaltar neste benchmark é o impacto do uso de diferentes algoritmos. Isto pode ser notado claramente nos tempos do quick sort para o pior caso e para o caso médio, eles são bem similares, enquanto que o bubble sort já apresenta uma notavel discrepância para estes mesmos casos. Isso mostra como determinados algoritmos podem ser mais aconselhados para determinada situações, de acordo com o resultado que se deseja obter.
+
+## Benchmark 6: Imagemagick
+
+
+
+
+
+
+
+
 
 ## Benchmark 7: TCC
 
