@@ -68,14 +68,16 @@ Com exceção destes casos anormais, foi possível perceber que os processadores
 Os tempos medidos neste benchmark também confirmaram as hipoteses teóricas de que os processadores mais potentes, apresentam melhor desempenho. Porém o que vale ressaltar neste benchmark é o impacto do uso de diferentes algoritmos. Isto pode ser notado claramente nos tempos do quick sort para o pior caso e para o caso médio, eles são bem similares, enquanto que o bubble sort já apresenta uma notavel discrepância para estes mesmos casos. Isso mostra como determinados algoritmos podem ser mais aconselhados para determinada situações, de acordo com o resultado que se deseja obter.
 
 ## Benchmark 6: Imagemagick
+* Dados comparados: Tempo de 4 execuções e o nũmero de instruções por ciclo nestas execuções.<br>
 
+|               | Tempo #1(s) | Tempo #2 (s) | Tempo #3 (s) | Tempo #4 (s) | Instructions #1 (IPC) | Instructions #2 (IPC) | Instructions #3 (IPC) | Instructions #4 (IPC) |
+|:-------------:|:-----------:|:------------:|:------------:|:------------:|:---------------------:|:---------------------:|:---------------------:|:---------------------:|
+|     Media     |    49.02    |     75.39    |     55.11    |     78.84    |          1.35         |          1.08         |          1.15         |          1.17         |
+|    Mediana    |    31.68    |     53.54    |     12.76    |     38.19    |          1.21         |          1.12         |          1.23         |          1.11         |
+| Desvio Padrão |    45.01    |     48.01    |     73.60    |    101.07    |          0.51         |          0.38         |          0.3          |          0.53         |
 
-
-
-
-
-
-
+Primeiramente, é interessante notar como o tempo varia de execução para execução, na mesma máquina. Isso pode se dar devido a varios fatores, como por exemplo as tasks sendo realizadas em paralelo com as medidas. Também nota-se que os computadores que apresentaram maior IPC, geralmente, apresentaram melhor desempenho.<br>
+Aqui, também é possível notar como os computadores com processadores mais modernos performaram melhor nos testes realizados.<br>
 
 ## Benchmark 7: TCC
 
@@ -103,3 +105,9 @@ Um ponto que vale ressaltar nas medidas e o tempo da maquina que possuia o proce
 
 Algo que foi altamente incomum nas medidas deste benchmark foi que a média da execução sem escrita na memória ser maior que a das execuções com escrita na memória. O que mais influenciou foi o maior tempo: 265.89 (Intel(R) Core(TM) i3-3110M CPU @ 2.40GHz 3072 KB Cache, 4GB RAM DDR3). Acredito que este tempo ou foi anotado errado, ou foi colhido enquanto a máquina fazia um processamento intenso de outra task, pois o segundo maior tempo foi: 38.36 (Intel(R) Core(TM)2 Quad CPU Q8400 @ 2.66GHz), com uma máquina que possui um processador menos potente, e o desvio padrão das medidas foi muito alto, indicando uma alta distância entre as medidas obtidas <br>
 Vale ressaltar que este caso foi o único em que a execução com escrita na memória teve tempo menor que a sem escrita na memória, mais uma vez reforçando a tese de medida corrompida ou erro de anotação dos dados.<br>
+
+## Conclusões
+
+No geral, a performance é diretamente proporcional as especificações das máquinas, quanto melhor a máquina, melhor a performance.<br>
+Apesar disso, é importante notar que as varias etapas da execução sao afetadas por diversos fatores além do processador: velocidade de acesso ao disco, quantidade de memória RAM disponível, tasks executadas em paralelo, escolha correta de algoritmo, entre outras coisas.<br>
+Para que se possa realmente verificar o desempenho de cada máquina isoladamente, seria importante replicar as condições das medições em cada uma das máquina, assim garante-se uma mlehor consistencia dos dados coletados.
