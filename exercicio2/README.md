@@ -1,47 +1,49 @@
-# MC723 - Exercicio 1
+# MC723 - Exercicio 2
 ## Gustavo Basso  RA: 105046
 
-Tempo gasto na execução com cada uma das opções de otimização:
+## Introdução
+
+A atividade escolhida foi a segunda opção dada: simular 4 programas com diferentes configruações de cache e escolher a melhor para caada um deles. <br>
+Os programas escolhidos foram: swim_f2b, mgrid_m2b, galgel_f2b e wupwise_m2b. <br>
+Para cada simulação foram variados o tamanho do cache e o número de blocos, sendo que cada um vario da seguinte maneira: <br>
+* *Tamanho do Cache*: 16k, 31k, 64k e 128k 
+* *Número de blocos*: 16, 32, 64 e 128
+
+Cada uma combinação possível foi testada em cada uma das simulações. <br>
+Ao detalhar cada uma das simulações apresentarei qual a porcentagem do total de fetchs correspondem a fetch de dados ou de instruções e, dentre estes, qual porcentagem compreende leituras e escritas na memória. Estes dados, juntamente com os resultados obtidos, será levada em consideraçõa para a escolha da melhor configuração de cache para cada simulação. É importante ressaltar que para as 4 simulações, os misses de cache de instrução apresentaram numeros irrisórios, com porcentagem muito próximas a 0%. <br>
+
+## Swim_f2b
+
+## Mgrid_m2b
+* Total de Fetchs no Cache de Intruções: 399999420
+  * Intruções: 100%
+  * Dados: 0%
+  * Leitura: 0%
+  * Escrita: 0%
+
+O número de misses do cache de instruction mostrou uma queda tanto quando o aumento do numero de blocos ocorreu, quanto com o aumento do número de cache, como pode ser conferido no gráfico a seguir:
+
+![](https://docs.google.com/spreadsheets/d/1OxLnOWhYRgaBHvVpQcZhttQJJnoN51nUtS_LUnPhhU8/pubchart?oid=208604784&format=image) 
+  
+Em todos os gráficos apresentados a linha vermelha correponde ao título, enquanto que as barras azuis correspondem ao número de blocos.
+  
+* Total de Fetchs no Cache de Dados: 144104981
+  * Intruções: 0%
+  * Dados: 100%
+  * Leitura: 84.48%
+  * Escrita: 15.52%
+
+Total Miss: ![](https://docs.google.com/spreadsheets/d/1OxLnOWhYRgaBHvVpQcZhttQJJnoN51nUtS_LUnPhhU8/pubchart?oid=1732521130&format=image)
+Read miss: ![](https://docs.google.com/spreadsheets/d/1OxLnOWhYRgaBHvVpQcZhttQJJnoN51nUtS_LUnPhhU8/pubchart?oid=1109622336&format=image)
+Write miss: ![](https://docs.google.com/spreadsheets/d/1OxLnOWhYRgaBHvVpQcZhttQJJnoN51nUtS_LUnPhhU8/pubchart?oid=1415368161&format=image)
 
 
-|      | Sem otimização |    O0    |    O1    |    O2    |    O3    |
-|:----:|:--------------:|:--------:|:--------:|:--------:|:--------:|
-| Real |    0m0.380s    | 0m0.382s | 0m0.314s | 0m0.280s | 0m0.278s |
-| User |    0m0.367s    | 0m0.369s | 0m0.301s | 0m0.265s | 0m0.266s |
-|  Sys |    0m0.003s    | 0m0.003s | 0m0.003s | 0m0.003s | 0m0.003s |
-
-O melhor tempo registrado foi com a otimização **-O3**: 0m0.278s. 
-
-***-mtune*** são otimizações especificas voltadas a processadores Intel 386 e AMD x86-64, que permitem especificar o processador utilizado pela máquina que vai executar o programa.
-Para efeito de teste, usei a opção *generic*. O tempo não mostrou alteração.
-
-Para compilá-los é necessário criar o header de calc_primo.c, alterar o arquivo main.c para importar o novo header e compilar ambos os arquivos fontes (.c) juntos.
-
-Segue o tempo gasto com cada uma das opções de compilação:
+![]()
 
 
-|      | Script Um arquivo fonte | Script Dois arquivos fonte | Makefile Um arquivo fonte | Makefile Dois arquivos fonte |
-|:----:|:-----------------------:|:--------------------------:|:-------------------------:|:----------------------------:|
-| Real |         0m0.280s        |          0m0.318s          |          0m0.279s         |           0m0.312s           |
-| User |         0m0.266s        |          0m0.306s          |          0m0.268s         |           0m0.300s           |
-|  Sys |         0m0.003s        |          0m0.003s          |          0m0.003s         |           0m0.003s           |
+## Galgel_f2b
 
-O Makefile e o Script, para o tempo final de execução, não apresentam diferenças de otimização clara. O Makefile poderia fazer diferença em tempo de compilação, uma vez que ele checa que programas precisam ser reconstruídos ou não.
+## Wupwise_m2b
 
-Os tempos com um arquivo fonte foram similares ao do teste anterior, porém o com dois arquivos fontes foi ligeiramente maior. Acredito que a diferença se deu devido a maneira que o programa é estruturado na memória de acordo com os arquivos fontes.
 
-***Testes com o programa que calcula o número de primos de 1 a n***.
 
-Para conseguir um tempo razoável, testei o programa com um valor aproximado de 50000. Os resultados foram o seguinte:
-
-|      | Um arquivo fonte |  Dois arquivos fonte |
-|:----:|:----------------:|:--------------------:|
-| Real |     0m0.311s     |       0m0.441s       |
-| User |     0m0.290s     |       0m0.429s       |
-|  Sys |     0m0.003s     |       0m0.003s       |
-
-Como esperado, o programa com dois arquivos fontes demorou mais do que o com apenas um, reforçando os resultados encontrados anteriormente.
-
-***gproof:*** não conegui rodar o gproof. 
-
-Uma maneira possível de paralelizar esse código é paralelizar o teste para checar se um núemro é primo. Ao invés de fazer um a um, seria possível com blocos de números que são conferidos paralelamente.
