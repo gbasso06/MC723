@@ -114,7 +114,7 @@ O gráfico mostra que o aumento do tamanho de cache, assim como o aumento do num
 
 Total Misses:<br>![](https://docs.google.com/spreadsheets/d/1OxLnOWhYRgaBHvVpQcZhttQJJnoN51nUtS_LUnPhhU8/pubchart?oid=170466165&format=image)<br>
 Read Misses:<br>![](https://docs.google.com/spreadsheets/d/1OxLnOWhYRgaBHvVpQcZhttQJJnoN51nUtS_LUnPhhU8/pubchart?oid=309145343&format=image)<br>
-Writing Misses:<br>![](hhttps://docs.google.com/spreadsheets/d/1OxLnOWhYRgaBHvVpQcZhttQJJnoN51nUtS_LUnPhhU8/pubchart?oid=760249419&format=image)<br>
+Writing Misses:<br>![](https://docs.google.com/spreadsheets/d/1OxLnOWhYRgaBHvVpQcZhttQJJnoN51nUtS_LUnPhhU8/pubchart?oid=760249419&format=image)<br>
 
 Os gráficos mostram que os misses no cache de dados melhoram significativamente com o aumento do número de blocos carregados, enquanto que apresentam melhora mais tímida com o aumento do tamanho do cache, tanto que 64k e 128k apresentam resultados semelhantes.<br>
 *Melhor Configuração*: 128K com 128 blocos.
