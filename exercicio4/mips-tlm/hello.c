@@ -1,6 +1,6 @@
 #include <stdio.h>
 volatile int procCounter = 0;
-volatile int *lock = (int *) 100*1024*1024+5;
+volatile int *lock = (int *) 100*1024*1024;
 
 void AcquireLock() {
   while (*lock);
@@ -10,10 +10,11 @@ void ReleaseLock() {
 
   *lock = 0;
 }
+
 void RecursiveHello( int n, int procNumber) {
 	if (n) {
 
-	printf("Hi from processor MipsProc%d!\n", procNumber);
+	printf("Hi from processor MipsProcc%d!\n", procNumber);
 	RecursiveHello(n - 1, procNumber);
 	}
 
