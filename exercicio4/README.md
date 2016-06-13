@@ -63,11 +63,12 @@ ArchC: Simulation statistics
     Simulation speed: 10219.40 K instr/s
 ```
 
-É possível perceber do resultado impresso, que a operaçào de print demora um tempo razoável, por isso a demora. Uma solução para a impressão sair correta é implementar o lock local, além do em hardware.
+É possível perceber do resultado impresso, que a operação de print leva mais tempo para ser concluída do que os acessos para serem realizados. Uma solução para a impressão sair correta é implementar o lock local, além do em hardware, ou um loop.
 
-Na execução da multiplicação de vetores foi possível constatar os seguintes resultados:
-- Número de ciclos no multicore foi menor que no single core, o que já mostra um ganho de desempenho
-- o ganho em tempo ocorre, porém é mais notável para aplicações bem grandes
+Não consegui executar a soma vetorial, porém acredito que pela teoria e os demais experimentos é possível constatar os seguintes resultados:
+- Número de ciclos no multicore menor que no single core, dado maior paralelismo.
+- Ganho em tempo de performance.
+- Resultados notavelmente superiores dependem, também, de uma implementação adequada que permita o paralelismo.
 
 ## conclusões finais:
-O multicore gera sim ganho de desempenho, porém é importante ressaltar que isso exige um trabalho maior na hora de gerar o código. É preciso se atentar para que o código realmente permita a paralelização e aproveitamento melhor dos dois, ou mais, códigos.
+O multicore gera sim ganho de desempenho em grande parte dos casos, porém resultados melhores dependem também da implementação e algoritmos adequados que permitam explorar o paralelismo do processador.
