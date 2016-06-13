@@ -68,8 +68,8 @@ ac_tlm_peripheral::~ac_tlm_peripheral() {
 */
 ac_tlm_rsp_status ac_tlm_peripheral::writem( const uint32_t &a , const uint32_t &d )
 {
+  cout << "WRITE @ addr: " <<  std::hex  << a << " data: " << d << endl;
   value = d;
-  cout << "addr: " <<  std::hex  << a << " data: " << d << endl;
   return SUCCESS;
 }
 
@@ -83,7 +83,7 @@ ac_tlm_rsp_status ac_tlm_peripheral::readm( const uint32_t &a , uint32_t &d )
 {
   d = value;
   value = 1;
-  cout << "addr: " <<  std::hex  << a << " data: " << d << endl;
+  cout << "READ @ addr: " <<  std::hex  << a << " data: " << d << endl;
   return SUCCESS;
 }
 
